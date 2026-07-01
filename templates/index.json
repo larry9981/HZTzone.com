@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "template--main": {
+      "type": "main-pod-app",
+      "settings": {}
+    }
+  },
+  "order": [
+    "template--main"
+  ]
+}

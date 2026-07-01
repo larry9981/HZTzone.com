@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Grobrav - Premium Print-On-Demand Store",
+  "description": "A luxury personalized apparel e-commerce brand powered by Gemini AI with multi-language and merchant analytics integrations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

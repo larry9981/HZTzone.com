@@ -1,0 +1,35 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Memoria AI POD Theme",
+    "theme_version": "1.0.1",
+    "theme_author": "Memoria Design Studio",
+    "theme_documentation_url": "https://memoria.com/docs",
+    "theme_support_url": "https://memoria.com/support"
+  },
+  {
+    "name": "Brand Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "brand_primary",
+        "label": "Primary Brand Color",
+        "default": "#e11d48"
+      },
+      {
+        "type": "color",
+        "id": "brand_secondary",
+        "label": "Secondary Brand Color",
+        "default": "#881337"
+      },
+      {
+        "type": "header",
+        "content": "AI Settings"
+      },
+      {
+        "type": "paragraph",
+        "content": "AI features are powered by Gemini 2.5 Flash Image models."
+      }
+    ]
+  }
+]
