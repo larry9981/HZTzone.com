@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   
   // By default allow localhost, 127.0.0.1, standard Cloud Run/Render domains, and the brand custom domains
   const allowedDomainsEnv = process.env.ALLOWED_DOMAINS;
-  let allowedHosts: string[] = ['localhost', '127.0.0.1', '::1', 'grobrav.com', 'www.grobrav.com'];
+  let allowedHosts: string[] = ['localhost', '127.0.0.1', '::1', 'hztzone.com', 'www.hztzone.com'];
   
   if (allowedDomainsEnv) {
     const customDomains = allowedDomainsEnv.split(',').map(d => d.trim().toLowerCase());
@@ -85,7 +85,7 @@ if (!fs.existsSync(UPLOADS_DIR)) {
 app.use('/uploads', express.static(UPLOADS_DIR));
 
 // Database setup
-const DB_PATH = path.join(process.cwd(), 'data', 'grobrav_db.json');
+const DB_PATH = path.join(process.cwd(), 'data', 'hztzone_db.json');
 
 // Ensure database parent directory exists
 if (!fs.existsSync(path.dirname(DB_PATH))) {
@@ -97,7 +97,7 @@ const INITIAL_DATABASE_STATE = {
   users: [
     {
       id: 'usr_admin',
-      email: 'admin@grobrav.com',
+      email: 'admin@hztzone.com',
       password: 'admin', // Simple password for demo
       role: 'admin',
       failedAttempts: 0,
@@ -105,7 +105,7 @@ const INITIAL_DATABASE_STATE = {
     },
     {
       id: 'usr_demo',
-      email: 'tester@grobrav.com',
+      email: 'tester@hztzone.com',
       password: 'password123',
       role: 'customer',
       failedAttempts: 0,
@@ -115,190 +115,216 @@ const INITIAL_DATABASE_STATE = {
   products: [
     {
       id: '1',
-      name: 'Custom Soulmate Hoodie',
-      price: 49.99,
-      originalPrice: 65.00,
-      category: 'women',
-      image: 'https://picsum.photos/id/338/800/1000',
-      images: ['https://picsum.photos/id/338/800/1000', 'https://picsum.photos/id/342/800/1000'],
-      rating: 4.8,
-      reviews: 124,
-      isCustomizable: true,
-      description: 'A cozy, premium cotton blend hoodie perfect for couples. Personalize it with your anniversary date or initials.',
+      name: 'HZTzone Smart Pet Feeder',
+      price: 59.99,
+      originalPrice: 89.99,
+      category: 'pets',
+      image: '/src/assets/images/hztzone_smart_pet_feeder_1782876443727.jpg',
+      images: ['/src/assets/images/hztzone_smart_pet_feeder_1782876443727.jpg'],
+      rating: 4.9,
+      reviews: 148,
+      isCustomizable: false,
+      description: 'Smart timed pet feeder with automatic portion control, voice recorder, and app companion. Keep your beloved pets fed and healthy on any schedule.',
       youtubeEmbedCode: '',
       ratingReviews: [
-        { id: 'rev-1', userName: 'Emily Watson', rating: 5, date: '2026-06-15', comment: 'Absolutely stunning! The print holds up great in the wash, and it was so cozy for our anniversary trip!' },
-        { id: 'rev-2', userName: 'Michael S.', rating: 4, date: '2026-06-12', comment: 'Great fit, soft material. Highly recommend.' }
+        { id: 'rev-1', userName: 'Emily Watson', rating: 5, date: '2026-06-15', comment: 'Super convenient! My cat gets her meals exactly on time now, and the app is very easy to configure.' },
+        { id: 'rev-2', userName: 'Michael S.', rating: 4, date: '2026-06-12', comment: 'Excellent quality and ultra-reliable feeding mechanisms. Highly recommend to all pet owners!' }
       ]
     },
     {
       id: '2',
-      name: 'Minimalist Line Art Tee',
-      price: 29.99,
-      category: 'women',
-      image: 'https://picsum.photos/id/325/800/1000',
-      images: ['https://picsum.photos/id/325/800/1000', 'https://picsum.photos/id/331/800/1000'],
-      rating: 4.9,
-      reviews: 89,
-      isCustomizable: true,
-      description: 'Wear your art. Upload your favorite photo to be converted into a stylish line art sketch printed on soft organic cotton.',
+      name: 'HZTzone High-Speed Ionic Hair Dryer',
+      price: 79.99,
+      originalPrice: 129.99,
+      category: 'beauty',
+      image: '/src/assets/images/hztzone_hair_dryer_1782876454614.jpg',
+      images: ['/src/assets/images/hztzone_hair_dryer_1782876454614.jpg'],
+      rating: 4.8,
+      reviews: 95,
+      isCustomizable: false,
+      description: 'Powerful 110,000 RPM high-speed digital brushless motor paired with advanced 200 million negative ion technology to dry hair in minutes while preserving moisture and luster.',
       youtubeEmbedCode: '',
       ratingReviews: [
-        { id: 'rev-3', userName: 'Sophia Reed', rating: 5, date: '2026-06-14', comment: 'The line art conversion is perfect! Got so many compliments already.' }
+        { id: 'rev-3', userName: 'Sophia Reed', rating: 5, date: '2026-06-14', comment: 'Absolutely amazing! Dries my thick hair in under 3 minutes, and it feels incredibly soft and shiny.' }
       ]
     },
     {
       id: '3',
-      name: 'Classic Dad Cap',
-      price: 24.99,
-      category: 'men',
-      image: 'https://picsum.photos/id/177/800/1000',
-      images: ['https://picsum.photos/id/177/800/1000'],
-      rating: 4.5,
-      reviews: 45,
-      isCustomizable: true,
-      description: 'The everyday essential. Embroider your name or a short phrase on this vintage-wash cotton cap.',
-      youtubeEmbedCode: 'yZ8X8jKzT20',
+      name: 'HZTzone Sonic Facial Cleansing Brush',
+      price: 29.99,
+      originalPrice: 49.99,
+      category: 'beauty',
+      image: '/src/assets/images/hztzone_facial_brush_1782876466584.jpg',
+      images: ['/src/assets/images/hztzone_facial_brush_1782876466584.jpg'],
+      rating: 4.7,
+      reviews: 64,
+      isCustomizable: false,
+      description: 'Medical-grade ultra-soft food-grade silicone brush utilizes 8,000 high-frequency sonic vibrations per minute to deeply flush away grease, blackheads, and cosmetic residues.',
+      youtubeEmbedCode: '',
       ratingReviews: [
-        { id: 'rev-4', userName: 'Lucas Grabe', rating: 4.5, date: '2026-06-10', comment: 'Really neat embroidery details. Fast delivery and safe box!' }
+        { id: 'rev-4', userName: 'Lucas Grabe', rating: 5, date: '2026-06-10', comment: 'Extremely gentle on my sensitive skin. Feels like a premium spa treatment at home!' }
       ]
     },
     {
       id: '4',
-      name: 'Vintage Photo Mug',
-      price: 19.99,
-      originalPrice: 25.00,
-      category: 'mugs',
-      image: 'https://picsum.photos/id/30/800/1000',
-      images: ['https://picsum.photos/id/30/800/1000', 'https://picsum.photos/id/42/800/1000'],
-      rating: 5.0,
-      reviews: 210,
-      isCustomizable: true,
-      description: 'Start your morning with a memory. High-quality ceramic mug that is microwave and dishwasher safe.',
+      name: 'HZTzone Smart Cat Water Fountain',
+      price: 24.99,
+      originalPrice: 39.99,
+      category: 'pets',
+      image: '/src/assets/images/hztzone_water_fountain_1782876478491.jpg',
+      images: ['/src/assets/images/hztzone_water_fountain_1782876478491.jpg'],
+      rating: 4.9,
+      reviews: 215,
+      isCustomizable: false,
+      description: 'Quadruple-stage active water filtration fountain featuring a running stream layout. Encourages your cats and small dogs to drink more fresh, mineral-rich, dust-free oxygen water.',
       youtubeEmbedCode: '',
       ratingReviews: []
     },
     {
       id: '5',
-      name: 'Urban Streetwear Oversized Tee',
+      name: 'HZTzone Smart Pet GPS & Activity Tracker',
       price: 34.99,
-      category: 'men',
-      image: 'https://picsum.photos/id/91/800/1000',
-      images: ['https://picsum.photos/id/91/800/1000'],
-      rating: 4.7,
-      reviews: 112,
-      isCustomizable: true,
-      description: 'Boxy fit, heavyweight cotton. The perfect canvas for bold statements and graphic prints.',
+      originalPrice: 59.99,
+      category: 'pets',
+      image: '/src/assets/images/hztzone_pet_gps_tracker_1782876406090.jpg',
+      images: ['/src/assets/images/hztzone_pet_gps_tracker_1782876406090.jpg'],
+      rating: 4.6,
+      reviews: 110,
+      isCustomizable: false,
+      description: 'Ultra-lightweight, waterproof collar GPS tag linking 24/7 real-time LTE positioning and daily physical step counters. Track paths and keep your pets safe.',
       youtubeEmbedCode: '',
       ratingReviews: []
     },
     {
       id: '6',
-      name: 'Magic Color Changing Mug',
-      price: 22.99,
-      category: 'mugs',
-      image: 'https://picsum.photos/id/225/800/1000',
-      images: ['https://picsum.photos/id/225/800/1000'],
-      rating: 4.6,
-      reviews: 76,
-      isCustomizable: true,
-      description: 'Watch your hidden message appear as you pour hot liquid into this magical heat-sensitive mug.',
+      name: 'HZTzone Ultrasonic Skin Scrubber',
+      price: 19.99,
+      originalPrice: 29.99,
+      category: 'beauty',
+      image: '/src/assets/images/hztzone_skin_scrubber_1782876491667.jpg',
+      images: ['/src/assets/images/hztzone_skin_scrubber_1782876491667.jpg'],
+      rating: 4.7,
+      reviews: 78,
+      isCustomizable: false,
+      description: 'Advanced skincare spatula leveraging 24KHz ultrasonic peeling vibes to effectively painlessly lift blackheads, dead skin, clogged follicles, and grease.',
       youtubeEmbedCode: '',
       ratingReviews: []
     },
     {
       id: '7',
-      name: 'Custom Embroidered Couple Pillow Case',
-      price: 24.99,
-      category: 'living',
-      image: 'https://picsum.photos/id/103/800/1000',
-      images: ['https://picsum.photos/id/103/800/1000'],
-      rating: 4.9,
+      name: 'HZTzone Smart Pet Remote Training Collar',
+      price: 49.99,
+      originalPrice: 79.99,
+      category: 'pets',
+      image: '/src/assets/images/hztzone_pet_training_collar_1782876416892.jpg',
+      images: ['/src/assets/images/hztzone_pet_training_collar_1782876416892.jpg'],
+      rating: 5.0,
       reviews: 58,
-      isCustomizable: true,
-      description: 'The ultimate bespoke bedroom accessory. Personalize this luxury organic cotton pillowcase set with your initials or anniversary.',
+      isCustomizable: false,
+      description: 'Professional high-capacity smart training receiver collar with vibration, sound warning modes, and an 800-meter premium wireless signal remote.',
       youtubeEmbedCode: '',
       ratingReviews: []
     },
     {
       id: '8',
-      name: 'Luxury Custom Ceramic Coasters',
-      price: 14.99,
-      category: 'living',
-      image: 'https://picsum.photos/id/106/800/1000',
-      images: ['https://picsum.photos/id/106/800/1000'],
+      name: 'HZTzone Smart Pet Health & Vitality Monitor',
+      price: 69.99,
+      originalPrice: 109.99,
+      category: 'pets',
+      image: '/src/assets/images/hztzone_pet_health_monitor_1782876427719.jpg',
+      images: ['/src/assets/images/hztzone_pet_health_monitor_1782876427719.jpg'],
       rating: 4.8,
       reviews: 42,
-      isCustomizable: true,
-      description: 'Handcrafted line-art printed ceramic coasters that protect your counters while celebrating your dynamic family moments.',
+      isCustomizable: false,
+      description: 'A continuous tracking bowl scale and health diagnostic module checking water hydration speed, daily eating habits, and instant weight metrics.',
       youtubeEmbedCode: '',
       ratingReviews: []
     }
   ],
   categories: [
-    { type: 'women', label: 'Women' },
-    { type: 'men', label: 'Men' },
-    { type: 'mugs', label: 'Gifts & Mugs' },
-    { type: 'living', label: '生活家居', sublabel: 'Home & Living', image: '', isAiGenerated: true },
-    { type: 'best-sellers', label: 'Best Seller', sublabel: 'Top Customized Picks', image: '', isAiGenerated: true },
-    { type: 'new-arrivals', label: 'New Arrivals' }
+    { type: 'pets', label: 'Pet Supplies', sublabel: 'Smart pet caring and training', image: '', isAiGenerated: true },
+    { type: 'beauty', label: 'Beauty & Care', sublabel: 'Premium electric beauty tools', image: '', isAiGenerated: true },
+    { type: 'best-sellers', label: 'Best Sellers', sublabel: 'Most popular choices', image: '', isAiGenerated: true }
   ],
   navigation: [
     { title: 'Home', path: '/' },
-    { title: 'Women', path: '/category/women' },
-    { title: 'Men', path: '/category/men' },
-    { title: 'Gifts & Mugs', path: '/category/mugs' },
-    { title: '生活家居', path: '/category/living' },
-    { title: 'Best Seller', path: '/category/best-sellers' }
+    { title: 'Pet Supplies', path: '/category/pets' },
+    { title: 'Beauty & Care', path: '/category/beauty' },
+    { title: 'Best Sellers', path: '/category/best-sellers' },
+    { title: 'Extended Warranty', path: '/warranty' }
   ],
   coupons: [
-    { code: 'GROBRAV10', discount: 10, description: '10% off site-wide for new customizers' },
+    { code: 'HZTZONE10', discount: 10, description: '10% off site-wide coupon code' },
     { code: 'SAVE15', discount: 15, description: '15% off coupon' },
-    { code: 'SUPER30', discount: 30, description: '30% massive customer loyalty discount' }
+    { code: 'SUPER30', discount: 30, description: '30% massive loyalty discount' }
   ],
   edm_subscribers: [
     { email: 'sarah.j@example.com', date: '2026-06-18' },
-    { email: 'marcus@romanphil.org', date: '2026-06-17' }
+    { email: 'marcus@hztzone.com', date: '2026-06-17' }
   ],
   edm_campaigns: [
-    { id: '1', title: 'Summer Custom Gifting Collection Launch', content: 'Our new personalized print tees and couples mugs are officially live!', date: '2026-06-19', recipientsCount: 2 }
+    { id: '1', title: 'HZTzone Grand Rebranding Launch!', content: 'Welcome to HZTzone. Explore our latest smart appliances, beauty routines, and premium pet supplies!', date: '2026-06-19', recipientsCount: 2 }
   ],
   orders: [
     {
-      id: 'GRO-839210',
+      id: 'HZT-839210',
       date: '2026-06-18 14:32',
       customerName: 'Sarah Jenkins',
       email: 'sarah.j@example.com',
       address: '452 Broad St, Newark, NJ 07102, United States',
       paymentMethod: 'PayPal (sarah.j@example.com)',
       itemsCount: 1,
-      total: 42.12,
-      discountCode: 'GROBRAV10',
+      total: 53.99,
+      discountCode: 'HZTZONE10',
       status: 'In Production',
-      customText: 'Forever Sarah',
       items: [
-        { name: 'Custom Comfort Unisex Hoodie', quantity: 1, price: 39.00, color: 'Beige', size: 'M' }
+        { name: 'HZTzone Smart Pet Feeder', quantity: 1, price: 59.99, color: 'White', size: 'Standard' }
       ]
     },
     {
-      id: 'GRO-294021',
+      id: 'HZT-294021',
       date: '2026-06-17 09:15',
       customerName: 'Marcus Aurelius',
-      email: 'marcus@romanphil.org',
+      email: 'marcus@hztzone.com',
       address: '9 Villa Adriana, Rome, 00010, Italy',
       paymentMethod: 'MasterCard ending in •••• 1042',
-      itemsCount: 2,
-      total: 62.64,
+      itemsCount: 1,
+      total: 79.99,
       status: 'Shipped',
-      customText: 'Memento Mori',
       items: [
-        { name: 'Personalized Memoria Ceramic Mug', quantity: 2, price: 29.00, color: 'White' }
+        { name: 'HZTzone High-Speed Ionic Hair Dryer', quantity: 1, price: 79.99, color: 'Pink' }
       ]
     }
   ],
   ga_logs: [
     { id: '1', type: 'page_view', path: '/', date: '2026-06-19', ip: '127.0.0.1' },
     { id: '2', type: 'add_to_cart', productId: '1', date: '2026-06-19', ip: '127.0.0.1' }
+  ],
+  warranties: [
+    {
+      id: 'W-001',
+      customerName: 'Alice Smith',
+      country: 'United States',
+      channel: 'Amazon',
+      email: 'alice.smith@example.com',
+      address: '742 Evergreen Terrace, Springfield, OR',
+      orderNumber: 'AMZ-839210',
+      phone: '+1 (555) 019-9231',
+      productName: 'HZTzone Smart Pet Feeder',
+      date: '2026-06-20'
+    },
+    {
+      id: 'W-002',
+      customerName: '张伟',
+      country: 'China',
+      channel: 'Tiktok',
+      email: 'zhangwei@hztzone.com',
+      address: '北京市朝阳区建国路88号',
+      orderNumber: 'TT-987211',
+      phone: '+86 13911112222',
+      productName: 'HZTzone High-Speed Ionic Hair Dryer',
+      date: '2026-06-19'
+    }
   ]
 };
 
@@ -352,9 +378,29 @@ function readDB() {
       }
     }
 
+    // Load default rich specifications if available to upgrade default products
+    let richSpecs: any = {};
+    const richSpecsPath = path.join(process.cwd(), 'data', 'rich_specs.json');
+    if (fs.existsSync(richSpecsPath)) {
+      try {
+        richSpecs = JSON.parse(fs.readFileSync(richSpecsPath, 'utf-8'));
+      } catch (e) {
+        console.error("Failed to parse rich_specs.json", e);
+      }
+    }
+
     // Self-healing migration for ALL products to ensure existing products in sale are never broken/affected
     db.products.forEach((p: any) => {
       let prodModified = false;
+      const spec = richSpecs[String(p.id)];
+      if (spec) {
+        if (p.name !== spec.name) { p.name = spec.name; prodModified = true; }
+        if (!p.richText || p.richText !== spec.richText) { p.richText = spec.richText; prodModified = true; }
+        if (!p.sku || p.sku !== spec.sku) { p.sku = spec.sku; prodModified = true; }
+        if (!p.packageSize || p.packageSize !== spec.packageSize) { p.packageSize = spec.packageSize; prodModified = true; }
+        if (!p.weight || p.weight !== spec.weight) { p.weight = spec.weight; prodModified = true; }
+        if (!p.images || p.images.length < 5) { p.images = spec.images; prodModified = true; }
+      }
       if (!p.images) { p.images = p.image ? [p.image] : []; prodModified = true; }
       if (!p.faqs) { p.faqs = []; prodModified = true; }
       if (!p.ratingReviews) { p.ratingReviews = []; prodModified = true; }
@@ -369,66 +415,26 @@ function readDB() {
       if (prodModified) modified = true;
     });
 
-    const hasLivingCat = db.categories.some((c: any) => c.type === 'living');
-    if (!hasLivingCat) {
-      db.categories.push({ type: 'living', label: '生活家居', sublabel: 'Home & Living', image: '', isAiGenerated: true });
+    if (!db.warranties) {
+      db.warranties = [];
       modified = true;
     }
 
-    const hasBestCat = db.categories.some((c: any) => c.type === 'best-sellers');
-    if (!hasBestCat) {
-      db.categories.push({ type: 'best-sellers', label: 'Best Seller', sublabel: 'Top Customized Picks', image: '', isAiGenerated: true });
+    const hasWarrantyNav = db.navigation && db.navigation.some((n: any) => n.path === '/warranty');
+    if (!db.navigation || db.navigation.length === 0 || !hasWarrantyNav) {
+      db.navigation = JSON.parse(JSON.stringify(INITIAL_DATABASE_STATE.navigation));
       modified = true;
     }
 
-    const hasLivingNav = db.navigation.some((n: any) => n.path?.includes('/living'));
-    if (!hasLivingNav) {
-      db.navigation.push({ title: '生活家居', path: '/category/living' });
+    const hasPetsCat = db.categories && db.categories.some((c: any) => c.type === 'pets');
+    if (!db.categories || db.categories.length === 0 || !hasPetsCat) {
+      db.categories = JSON.parse(JSON.stringify(INITIAL_DATABASE_STATE.categories));
       modified = true;
     }
 
-    const hasBestNav = db.navigation.some((n: any) => n.path?.includes('/best-sellers'));
-    if (!hasBestNav) {
-      db.navigation.push({ title: 'Best Seller', path: '/category/best-sellers' });
-      modified = true;
-    }
-
-    // Ensure products 7 and 8 exist for Living/Bestseller fallback preview
-    const devProduct7 = db.products.some((p: any) => p.id === '7');
-    if (!devProduct7) {
-      db.products.push({
-        id: '7',
-        name: 'Custom Embroidered Couple Pillow Case',
-        price: 24.99,
-        category: 'living',
-        image: 'https://picsum.photos/id/103/800/1000',
-        images: ['https://picsum.photos/id/103/800/1000'],
-        rating: 4.9,
-        reviews: 58,
-        isCustomizable: true,
-        description: 'The ultimate bespoke bedroom accessory. Personalize this luxury organic cotton pillowcase set with your initials or anniversary.',
-        youtubeEmbedCode: '',
-        ratingReviews: []
-      });
-      modified = true;
-    }
-
-    const devProduct8 = db.products.some((p: any) => p.id === '8');
-    if (!devProduct8) {
-      db.products.push({
-        id: '8',
-        name: 'Luxury Custom Ceramic Coasters',
-        price: 14.99,
-        category: 'living',
-        image: 'https://picsum.photos/id/106/800/1000',
-        images: ['https://picsum.photos/id/106/800/1000'],
-        rating: 4.8,
-        reviews: 42,
-        isCustomizable: true,
-        description: 'Handcrafted line-art printed ceramic coasters that protect your counters while celebrating your dynamic family moments.',
-        youtubeEmbedCode: '',
-        ratingReviews: []
-      });
+    const hasHztProducts = db.products && db.products.some((p: any) => p.name.includes('HZTzone'));
+    if (!db.products || db.products.length === 0 || !hasHztProducts) {
+      db.products = JSON.parse(JSON.stringify(INITIAL_DATABASE_STATE.products));
       modified = true;
     }
 
@@ -507,7 +513,7 @@ function logSecurityEvent(email: string, eventType: string, description: string,
     const newLog = {
       id: 'log_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
       timestamp: new Date().toISOString(),
-      email: email || 'unknown@grobrav.com',
+      email: email || 'unknown@hztzone.com',
       eventType, // e.g. 'admin_login_success', 'admin_login_failed', 'admin_login_blocked', 'admin_password_changed', 'security_policy_updated'
       description,
       ip: String(ip || 'unknown')
@@ -552,22 +558,83 @@ app.get('/api/state', (req, res) => {
     coupons: db.coupons,
     orders: db.orders,
     contactInfo: db.contact_info || {
-      email: 'support@grobrav.com',
-      phone: '+1 (555) 123-4567',
-      address: '123 Fashion Ave, NY 10016',
-      slogan: 'The Art of Bespoke Gifting'
+      email: 'support@hztzone.com',
+      phone: '+1 (555) 789-3210',
+      address: 'HZTzone Global Logistics Parkway, Suite 100',
+      slogan: 'Premium Pet, Smart Tech & Skincare Beauty Essentials'
     },
     pagesContent: db.pages_content || {
-      shipping: "Grobrav operates logistics routes serving major international economies. Free delivery is automatically offered at checkout when applying custom corporate promotion vouchers or purchasing cart values exceeding $75.00 USD.",
-      returns: "At Grobrav, every customized item is made-to-order. If your print arrives damaged, or contains visual placement alignment errors deviating from your preview, we offer immediate 100% replacement shipments within 14 calendar days of delivery.",
-      size_guide: "Sublimated fabric contains slight stretch parameters. Standard regular fits align with international standards. We recommend sizing up if you prefer an oversized hoodie fit.",
-      privacy: "Your private graphic design files and family photographs uploaded to Grobrav servers are strictly processed internally using sandboxed cloud compilers. None of your image data is ever shared with third-party advertising registries.",
-      terms: "Grobrav provides custom sublimation print-on-demand services. By uploading designs or photographs, you guarantee that you own respective intellectual property permissions or rights."
+      shipping: "HZTzone operates global logistics centers. Free standard shipping is automatically applied at checkout for any order total exceeding $75.00 USD.",
+      returns: "At HZTzone, your satisfaction is our priority. We offer a 14-day hassle-free return or replacement period for defective or unused products in their original packaging.",
+      size_guide: "Please refer to the detailed size guides on our product page before purchasing pet apparel or smart device accessories to ensure a perfect fit.",
+      privacy: "Your private data is safe with us. HZTzone strictly processes customer emails, phone numbers, and addresses for fulfillment and warranty authentication only.",
+      terms: "By utilizing the HZTzone e-commerce storefront, you agree to comply with our global terms of service and standard warranty guidelines."
     },
     pixelSettings: db.pixel_settings || {
       facebookPixelId: '',
       googleTagId: ''
     }
+  });
+});
+
+// 1.5. PRODUCT EXTENDED WARRANTY REGISTRATION API
+app.post('/api/warranty', (req, res) => {
+  const { productName, country, channel, customerName, email, address, orderNumber, phone } = req.body;
+  
+  if (!productName || !country || !channel || !customerName || !email || !address || !orderNumber || !phone) {
+    return res.status(400).json({ error: 'Please fill in all required warranty fields' });
+  }
+
+  const db = readDB();
+  if (!db.warranties) {
+    db.warranties = [];
+  }
+
+  const warrantyId = `W-${Math.floor(100000 + Math.random() * 900000)}`;
+  const newWarranty = {
+    id: warrantyId,
+    productName,
+    country,
+    channel,
+    customerName,
+    email,
+    address,
+    orderNumber,
+    phone,
+    date: new Date().toISOString().split('T')[0]
+  };
+
+  db.warranties.unshift(newWarranty);
+  writeDB(db);
+
+  // Map channels to review/comment URLs for direct review redirection
+  let reviewUrl = 'https://www.google.com';
+  const chLower = channel.toLowerCase();
+  if (chLower.includes('amazon') || chLower.includes('亚马逊')) {
+    reviewUrl = 'https://www.amazon.com/gp/css/order-history';
+  } else if (chLower.includes('ebay')) {
+    reviewUrl = 'https://www.ebay.com/myb/PurchaseHistory';
+  } else if (chLower.includes('ozon')) {
+    reviewUrl = 'https://www.ozon.ru/my/comments';
+  } else if (chLower.includes('wb') || chLower.includes('wildberries')) {
+    reviewUrl = 'https://www.wildberries.ru/lk/myreviews';
+  } else if (chLower.includes('tiktok')) {
+    reviewUrl = 'https://www.tiktok.com';
+  }
+
+  res.json({
+    success: true,
+    warrantyId,
+    reviewUrl,
+    message: 'Extended warranty successfully registered!'
+  });
+});
+
+app.get('/api/admin/warranties', (req, res) => {
+  const db = readDB();
+  res.json({
+    success: true,
+    warranties: db.warranties || []
   });
 });
 
@@ -631,7 +698,7 @@ app.post('/api/cart', (req, res) => {
 app.get('/api/contact-info', (req, res) => {
   const db = readDB();
   res.json(db.contact_info || {
-    email: 'support@grobrav.com',
+    email: 'support@hztzone.com',
     phone: '+1 (555) 123-4567',
     address: '123 Fashion Ave, NY 10016',
     slogan: 'The Art of Bespoke Gifting'
@@ -642,7 +709,7 @@ app.post('/api/admin/contact-info', (req, res) => {
   const { email, phone, address, slogan } = req.body;
   const db = readDB();
   db.contact_info = {
-    email: email || 'support@grobrav.com',
+    email: email || 'support@hztzone.com',
     phone: phone || '+1 (555) 123-4567',
     address: address || '123 Fashion Ave, NY 10016',
     slogan: slogan || 'The Art of Bespoke Gifting'
@@ -1176,7 +1243,7 @@ app.post('/api/admin/products/ai-write', async (req, res) => {
 
     if (type === 'brief') {
       prompt = `Write a persuasive, high-converting product brief description (around 2-3 sentences, 50-80 words).
-Brand Name: Grobrav (luxurious bespoke personalized custom gifts & apparel boutique)
+Brand Name: HZTzone (luxurious premium smart appliances and pet caring boutique)
 Product Category: ${productCategory || 'Custom Gifts'}
 Product Title: "${productTitle || 'Custom Handmade Product'}"
 Specific user guidelines or prompt directives: "${userPrompt || 'Highlight luxurious custom print'}"
@@ -1188,7 +1255,7 @@ Strict Standards to incorporate:
 Return ONLY the plain text of the description. Do not wrap in markdown quotes or extra headers.`;
     } else {
       prompt = `Generate a magnificent, comprehensive product detail layout section written in clean, robust HTML.
-Brand Name: Grobrav (luxurious bespoke personalized custom gifts & apparel boutique)
+Brand Name: HZTzone (luxurious premium smart appliances and pet caring boutique)
 Product Category: ${productCategory || 'Custom Gifts'}
 Product Title: "${productTitle || 'Custom Handmade Product'}"
 Specific user guidelines or prompt directives: "${userPrompt || 'Highlight premium design components and handcrafted longevity'}"
@@ -1542,18 +1609,18 @@ app.post('/api/admin/contact-us/reply', async (req, res) => {
 
       const emailHtml = `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 25px; border: 1px solid #eaeaea; border-radius: 16px; background-color: #fafafa;">
-          <h2 style="color: #111827; border-bottom: 2px solid #db2777; padding-bottom: 10px; font-weight: 800;">Grobrav Custom Support / 客服回复</h2>
+          <h2 style="color: #111827; border-bottom: 2px solid #eab308; padding-bottom: 10px; font-weight: 800;">HZTzone Support / 客服回复</h2>
           <p>Hi <strong>${msg.name || 'Valued Customer'}</strong>,</p>
           <p>Thank you for reaching out to us. We have received your message regarding: <strong>"${msg.subject}"</strong></p>
           <div style="background-color: #f3f4f6; padding: 15px; border-radius: 12px; font-style: italic; margin: 15px 0; font-size: 13px; color: #4b5563;">
             "${msg.message}"
           </div>
-          <p style="font-weight: bold; margin-top: 20px; color: #db2777;">Our Reply / 客服解答:</p>
-          <div style="white-space: pre-wrap; font-size: 14px; color: #111827; background-color: #fdf2f8; border-left: 4px solid #db2777; padding: 15px; border-radius: 8px; line-height: 1.6;">${replyText}</div>
+          <p style="font-weight: bold; margin-top: 20px; color: #eab308;">Our Reply / 客服解答:</p>
+          <div style="white-space: pre-wrap; font-size: 14px; color: #111827; background-color: #fefbeb; border-left: 4px solid #eab308; padding: 15px; border-radius: 8px; line-height: 1.6;">${replyText}</div>
           <p style="margin-top: 30px; font-size: 12px; color: #9ca3af; border-top: 1px solid #eaeaea; padding-top: 15px;">
             Best regards,<br/>
-            <strong>Grobrav Customer Support</strong><br/>
-            <a href="https://www.grobrav.com" style="color: #db2777; text-decoration: none; font-weight: bold;">www.grobrav.com</a>
+            <strong>HZTzone Customer Support</strong><br/>
+            <a href="https://www.hztzone.com" style="color: #eab308; text-decoration: none; font-weight: bold;">www.hztzone.com</a>
           </p>
         </div>
       `;
@@ -1561,7 +1628,7 @@ app.post('/api/admin/contact-us/reply', async (req, res) => {
       await transporter.sendMail({
         from,
         to: msg.email,
-        subject: `Re: [Grobrav Custom Support] ${msg.subject}`,
+        subject: `Re: [HZTzone Support] ${msg.subject}`,
         html: emailHtml
       });
       emailSent = true;
@@ -1602,7 +1669,7 @@ app.post('/api/edm/subscribe', (req, res) => {
     writeDB(db);
   }
 
-  res.json({ success: true, message: 'Thank you for subscribing to Grobrav Newsletters! 10% Coupon GROBRAV10 shared to inbox!' });
+  res.json({ success: true, message: 'Thank you for subscribing to HZTzone Newsletters! 10% Coupon HZT10 shared to inbox!' });
 });
 
 // List Subscribers for dashboard
@@ -1621,8 +1688,8 @@ app.get('/api/admin/edm/config', (req, res) => {
       smtpUser: process.env.SMTP_USER || '',
       smtpPass: process.env.SMTP_PASS || '',
       smtpSecure: process.env.SMTP_SECURE === 'true',
-      senderName: 'Grobrav Shop',
-      senderEmail: process.env.SMTP_FROM || 'noreply@grobrav.com'
+      senderName: 'HZTzone Shop',
+      senderEmail: process.env.SMTP_FROM || 'noreply@hztzone.com'
     }
   });
 });
@@ -1637,8 +1704,8 @@ app.post('/api/admin/edm/config', (req, res) => {
     smtpUser: smtpUser || '',
     smtpPass: smtpPass || '',
     smtpSecure: !!smtpSecure,
-    senderName: senderName || 'Grobrav Shop',
-    senderEmail: senderEmail || 'noreply@grobrav.com'
+    senderName: senderName || 'HZTzone Shop',
+    senderEmail: senderEmail || 'noreply@hztzone.com'
   };
   writeDB(db);
   res.json({ success: true, config: db.email_config });
@@ -1708,18 +1775,18 @@ app.post('/api/admin/edm/send', async (req, res) => {
     // Replace dynamic placeholders in subject and content
     // {{name}} or {{customerName}} -> rName
     // {{email}} -> rEmail
-    // {{store_name}} -> Grobrav
+    // {{store_name}} -> HZTzone
     let personalizedSubject = title
       .replace(/\{\{name\}\}/gi, rName)
       .replace(/\{\{customerName\}\}/gi, rName)
       .replace(/\{\{email\}\}/gi, rEmail)
-      .replace(/\{\{store_name\}\}/gi, 'Grobrav');
+      .replace(/\{\{store_name\}\}/gi, 'HZTzone');
 
     let personalizedContent = content
       .replace(/\{\{name\}\}/gi, rName)
       .replace(/\{\{customerName\}\}/gi, rName)
       .replace(/\{\{email\}\}/gi, rEmail)
-      .replace(/\{\{store_name\}\}/gi, 'Grobrav');
+      .replace(/\{\{store_name\}\}/gi, 'HZTzone');
 
     let status = 'Simulated / Logged';
     let errorMessage = '';
@@ -2077,26 +2144,25 @@ app.post('/api/ai-chat', async (req, res) => {
     `- Product ID: ${p.id}, Name: ${p.name}, Price: $${p.price}, Category: ${p.category}, Highlights: ${p.description}. Customization supported: ${p.isCustomizable ? 'Yes' : 'No'}`
   ).join('\n');
 
-  const systemInstruction = `You are the highly professional customer care AI assistant for "Grobrav" - a premium Print-On-Demand personalized apparel and gift e-commerce studio (formerly Memoria). 
-Our current top-tier collections are: Couples hoodies, minimalist line art screen-t-shirts, embroidered active-wear dad caps, custom ceramic and color changing mugs.
+  const systemInstruction = `You are the highly professional customer care AI assistant for "HZTzone" - a premium smart home appliances, high-quality pet supplies, and professional beauty & personal care products e-commerce brand.
+Our current top-tier collections are: Timed smart feeders, premium filtered pet water fountains, pet locator collars with LTE tracking, professional ionic hair dryers, and ultrasonic facial spatulas.
 
 Here is the official products catalog in database:
 ${productsListSummary}
 
-Grobrav Support Policies & FAQs to guide users:
-- Brand Name: Grobrav (Ensure you only address the store as Grobrav or Grobrav AI Studio)
-- Shipping Time: Custom manufacturing takes 2-4 business days. Ground delivery takes an additional 5-7 business days depending on geography.
-- Return Policy: Personalized customized items cannot be returned due to buyer remorse, but full replacement is issued free of shipping costs for defective or damaged items.
-- Size Guide recommendation: Hoodies are relaxed premium fits. Order standard true-to-size for casual wear, or size-up for extreme oversized streetwear trends.
+HZTzone Support Policies & FAQs to guide users:
+- Brand Name: HZTzone (Ensure you only address the store as HZTzone)
+- Shipping Time: Product verification and packaging takes 1-2 business days. Ground tracked shipping takes an additional 5-7 business days.
+- Return & Warranty Policy: High-quality appliances and electronic items are protected by a 1 to 2-year warranty against failures. If any product is damaged or defective at delivery, free replacements are sent out immediately.
 - Payment Methods: We support secure integrated checkouts via PayPal holding sandboxes and standard encrypted card payments (Visa/Mastercard/Amex).
-- Order Tracking: Customers can query their current orders on the "Track Order" page using references like "GRO-839210".
-- Tone: Extremely polite, luxury brand boutique manager tone. Helpful, prompt, elegant, and concise. Make responses visually gorgeous with proper formatting and bullets!`;
+- Order Tracking: Customers can query their current orders on the "Track Order" page using references like "HZT-839210".
+- Tone: Extremely polite, luxury tech brand manager tone. Helpful, prompt, elegant, and concise. Make responses visually gorgeous with proper formatting and bullets!`;
 
   const ai = getGemini();
   if (!ai) {
     // Elegant fallback simulation
     return res.json({ 
-      reply: `Hello! Welcome to **Grobrav AI Design Studio**. I am happy to assist you today.\n\nSince our active AI API key setup is pending, here is some quick general guidance:\n\n1. **Couples Hoodies:** Extremely popular! Can be personalized with custom dates and anniversary memories.\n2. **Shipping:** 2-4 days production + 5-7 days shipping.\n3. **Promo coupon:** Try checkout discount code **GROBRAV10** for 10% off!\n\nPlease let me know if you would like me to detail size recommendations or track your active order!` 
+      reply: `Hello! Welcome to **HZTzone Smart Living Assistant**. I am happy to assist you today.\n\nSince our active AI API key setup is pending, here is some quick general guidance:\n\n1. **Smart Pet Products:** Outstanding timed smart dispensers, water fountains, and LTE trackers.\n2. **Ionic Hair Dryers:** 110,000 RPM high-speed motor for fast drying and elite hair care.\n3. **Promo Coupon:** Try checkout discount code **HZT10** for 10% off!\n\nPlease let me know if you would like me to detail product specifications or track your active order!` 
     });
   }
 
@@ -2118,7 +2184,7 @@ Grobrav Support Policies & FAQs to guide users:
   } catch (err: any) {
     console.info('Gemini support bot currently offline. Utilizing premium support policy knowledge-base fallback.');
     res.json({ 
-      reply: `Thank you for reaching out to **Grobrav Support**. Let me help you with our premium collection specs:\n\n- We offer cozy custom hoodies ($49.99), line-art custom tees ($29.99), and magic heat-sensitive mugs ($22.99).\n- Use promo voucher **GROBRAV10** for 10% discount off your custom details at checkout!\n- If you need to check order pipelines, please head over to the **Track Order** tab and enter your GRO-XXXXXX code!` 
+      reply: `Thank you for reaching out to **HZTzone Support**. Let me help you with our premium collection specs:\n\n- We offer timing automatic pet feeders ($89.99), ionic high-speed hair dryers ($129.99), and sonic facial spatulas ($45.99).\n- Use promo voucher **HZT10** for a 10% discount on your purchase!\n- If you need to check order status, please head over to the **Track Order** tab and enter your HZT-XXXXXX code!` 
     });
   }
 });
@@ -2132,8 +2198,8 @@ app.post('/api/gemini/generate-text', async (req, res) => {
     return res.json({
       ideas: [
         "Together since " + new Date().getFullYear(),
-        "Grobrav Fine Love",
-        "You + Me Forever"
+        "HZTzone Smart Care",
+        "Love and Wellness"
       ]
     });
   }
@@ -2170,8 +2236,8 @@ app.post('/api/gemini/generate-text', async (req, res) => {
     res.json({
       ideas: [
         "Together since " + new Date().getFullYear(),
-        "Grobrav Fine Love",
-        "You + Me Forever"
+        "HZTzone Smart Care",
+        "Love and Wellness"
       ]
     });
   }
@@ -2368,5 +2434,5 @@ if (!isProduction) {
 }
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Grobrav Full-Stack Server listening on http://0.0.0.0:${PORT}`);
+  console.log(`HZTzone Full-Stack Server listening on http://0.0.0.0:${PORT}`);
 });

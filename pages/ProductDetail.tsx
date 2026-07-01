@@ -119,17 +119,30 @@ export const ProductDetail: React.FC = () => {
     const found = products.find((p) => String(p.id) === String(id));
     if (found) {
       setProduct(found);
-      if (found.images && found.images.length > 0 && !selectedImage) {
+      
+      // Always use the newly found product's first image
+      if (found.images && found.images.length > 0) {
         setSelectedImage(found.images[0]);
+      } else if (found.image) {
+        setSelectedImage(found.image);
+      } else {
+        setSelectedImage("");
       }
+
+      // Reset customization and reviews when product ID changes
+      setCustomText("");
+      setCustomImage("");
+      setAiSuggestions([]);
+      setReviewName("");
+      setReviewRating(5);
+      setReviewComment("");
+      setReviewFeedback("");
 
       const availableColors =
         found.colors && found.colors.length > 0
           ? found.colors
           : ["White", "Black", "Pink", "Navy"];
-      if (!availableColors.includes(selectedColor)) {
-        setSelectedColor(availableColors[0]);
-      }
+      setSelectedColor(availableColors[0]);
 
       const availableSizes =
         found.sizes && found.sizes.length > 0
@@ -137,11 +150,16 @@ export const ProductDetail: React.FC = () => {
           : found.category === "men" || found.category === "women"
             ? ["XS", "S", "M", "L", "XL", "XXL"]
             : [];
-      if (availableSizes.length > 0 && !availableSizes.includes(selectedSize)) {
+      if (availableSizes.length > 0) {
         setSelectedSize(availableSizes[0]);
+      } else {
+        setSelectedSize("Standard");
       }
+
+      // Smooth scroll to top to properly land on the actual product page
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }, [id, products, selectedImage]);
+  }, [id, products]);
 
   // Inject Google GMS-compliant Structured Microdata (JSON-LD) and dynamic SEO metatags
   useEffect(() => {
@@ -438,6 +456,7 @@ export const ProductDetail: React.FC = () => {
                 src={selectedImage}
                 alt={product.name}
                 className="w-full h-full object-cover animate-fade-in"
+                referrerPolicy="no-referrer"
               />
 
               <button className="absolute top-6 right-6 p-3 rounded-full bg-white shadow-lg text-neutral-600 hover:text-brand-600 transition-colors shadow-black/10">
@@ -456,6 +475,7 @@ export const ProductDetail: React.FC = () => {
                     src={img}
                     alt=""
                     className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
                   />
                 </button>
               ))}

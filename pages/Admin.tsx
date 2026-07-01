@@ -62,7 +62,7 @@ export const Admin: React.FC = () => {
   
   // Login flow
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [adminEmail, setAdminEmail] = useState('admin@grobrav.com');
+  const [adminEmail, setAdminEmail] = useState('admin@hztzone.com');
   const [adminPassword, setAdminPassword] = useState('admin');
   const [authError, setAuthError] = useState('');
   const [authLoading, setAuthLoading] = useState(false);
@@ -73,7 +73,12 @@ export const Admin: React.FC = () => {
   const [defaultPassWarning, setDefaultPassWarning] = useState(false);
 
   // Tabs
-  const [activeTab, setActiveTab] = useState<'stats' | 'orders' | 'gateways' | 'products' | 'categories' | 'coupons' | 'edm' | 'reviews' | 'profile' | 'contact' | 'pages_content' | 'pixels' | 'support_messages'>('stats');
+  const [activeTab, setActiveTab] = useState<'stats' | 'orders' | 'gateways' | 'products' | 'categories' | 'coupons' | 'edm' | 'reviews' | 'profile' | 'contact' | 'pages_content' | 'pixels' | 'support_messages' | 'warranties'>('stats');
+
+  // Extended Warranty states
+  const [warranties, setWarranties] = useState<any[]>([]);
+  const [warrantiesLoading, setWarrantiesLoading] = useState(false);
+  const [warrantySearchTerm, setWarrantySearchTerm] = useState('');
 
   // Order Management States
   const [selectedOrderForView, setSelectedOrderForView] = useState<any | null>(null);
@@ -725,6 +730,9 @@ export const Admin: React.FC = () => {
       if (activeTab === 'support_messages') {
         fetchSupportMessages();
       }
+      if (activeTab === 'warranties') {
+        fetchWarranties();
+      }
     }
   }, [isAuthenticated, activeTab]);
 
@@ -896,6 +904,18 @@ export const Admin: React.FC = () => {
       console.error('Failed to fetch security logs:', err);
     } finally {
       setSecurityLogsLoading(false);
+    }
+  };
+
+  const fetchWarranties = async () => {
+    setWarrantiesLoading(true);
+    try {
+      const res = await api.getWarranties();
+      setWarranties(res.warranties || []);
+    } catch (err: any) {
+      showToast('Failed to load warranty registrations: ' + err.message, 'error');
+    } finally {
+      setWarrantiesLoading(false);
     }
   };
 
@@ -2285,6 +2305,9 @@ export const Admin: React.FC = () => {
           </button>
           <button onClick={() => setActiveTab('support_messages')} className={`w-full text-left px-4 py-3 rounded-xl text-xs font-bold tracking-wide transition-all uppercase flex items-center gap-2.5 ${activeTab === 'support_messages' ? 'bg-neutral-950 text-white shadow' : 'bg-neutral-50 text-neutral-500 hover:bg-neutral-100'}`}>
             <MessageSquare size={15} /> Customer support inbox
+          </button>
+          <button onClick={() => setActiveTab('warranties')} className={`w-full text-left px-4 py-3 rounded-xl text-xs font-bold tracking-wide transition-all uppercase flex items-center gap-2.5 ${activeTab === 'warranties' ? 'bg-neutral-950 text-white shadow' : 'bg-neutral-50 text-neutral-500 hover:bg-neutral-100'}`}>
+            <Shield size={15} className="text-brand-650" /> {al("售后延保申请管理", "After-Sales Warranties")}
           </button>
         </div>
 
@@ -5466,6 +5489,203 @@ export const Admin: React.FC = () => {
                   <div>
                     <p className="font-bold text-sm text-neutral-700">All clear! Support inbox empty.</p>
                     <p className="text-xs text-neutral-400 mt-0.5">Any inquiries submitted through the Contact Us form will populate here immediately.</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* TAB 13: EXTENDED WARRANTIES MANAGEMENT */}
+          {activeTab === 'warranties' && (
+            <div className="space-y-6 animate-fade-in text-left">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                  <h2 className="text-xl font-serif font-black text-neutral-900 flex items-center gap-2">
+                    <Shield size={22} className="text-brand-650" />
+                    {al("售后延保申请客户管理", "After-Sales Warranty Application Center")}
+                  </h2>
+                  <p className="text-xs text-neutral-400 mt-0.5">
+                    {al("查看并导出所有提交延保服务的客户完整信息（支持Excel/WPS导出）。", "View and export complete client registration details for product extended warranty (Excel/WPS supported).")}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2.5">
+                  <button
+                    onClick={fetchWarranties}
+                    disabled={warrantiesLoading}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 rounded-xl text-xs font-bold transition-all border shadow-2xs cursor-pointer select-none"
+                  >
+                    <RefreshCw size={13} className={warrantiesLoading ? 'animate-spin' : ''} />
+                    {al("刷新列表", "Refresh List")}
+                  </button>
+                  <Button
+                    onClick={() => {
+                      if (warranties.length === 0) {
+                        showToast(al("暂无延保申请数据可供导出", "No warranty registrations to export"), "error");
+                        return;
+                      }
+                      
+                      const headers = [
+                        al('产品名称', 'Product Name'),
+                        al('购买渠道', 'Purchase Channel'),
+                        al('完成订单号', 'Order ID'),
+                        al('客户姓名', 'Customer Name'),
+                        al('客户邮箱', 'Customer Email'),
+                        al('联系电话', 'Contact Phone'),
+                        al('国家', 'Country'),
+                        al('居住地址', 'Residential Address'),
+                        al('申请时间', 'Applied Date')
+                      ];
+                      
+                      const rows = warranties.map((w: any) => [
+                        w.name || '',
+                        w.channel || '',
+                        w.orderNumber || w.orderId || '',
+                        w.customerName || '',
+                        w.email || '',
+                        w.phone || '',
+                        w.country || '',
+                        w.address || '',
+                        w.date ? new Date(w.date).toLocaleString() : ''
+                      ]);
+
+                      const csvContent = [
+                        headers.join(','),
+                        ...rows.map(row => row.map(val => `"${String(val).replace(/"/g, '""')}"`).join(','))
+                      ].join('\n');
+                      
+                      const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvContent], { type: 'text/csv;charset=utf-8;' });
+                      const link = document.createElement('a');
+                      link.href = URL.createObjectURL(blob);
+                      link.setAttribute('download', `HZTzone_Extended_Warranties_${new Date().toISOString().split('T')[0]}.csv`);
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                      
+                      showToast(al("WPS / Excel格式延保客户数据导出成功！", "Warranties log exported to Excel/WPS successfully!"), "success");
+                    }}
+                    className="text-xs font-black bg-brand-650 hover:bg-brand-700 text-white flex items-center gap-1.5 shadow"
+                  >
+                    <Download size={13} />
+                    {al("导出WPS / EXCEL", "Export WPS / EXCEL")}
+                  </Button>
+                </div>
+              </div>
+
+              {/* Filter / Search section */}
+              <div className="bg-neutral-50 p-4 rounded-2xl border flex flex-col sm:flex-row gap-3 items-center">
+                <div className="relative w-full sm:w-80">
+                  <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
+                  <input
+                    type="text"
+                    value={warrantySearchTerm}
+                    onChange={(e) => setWarrantySearchTerm(e.target.value)}
+                    placeholder={al("搜索客户姓名、邮箱、订单号...", "Search by customer name, email, order ID...")}
+                    className="w-full pl-9 pr-3.5 py-2 text-xs border rounded-xl bg-white focus:outline-none focus:ring-1 focus:ring-brand-500 font-sans font-medium"
+                  />
+                </div>
+                <div className="text-[10px] text-neutral-400 font-mono sm:ml-auto">
+                  {al(`共找到 ${warranties.filter((w: any) => {
+                    const term = warrantySearchTerm.toLowerCase();
+                    return !warrantySearchTerm || 
+                      String(w.customerName || '').toLowerCase().includes(term) ||
+                      String(w.email || '').toLowerCase().includes(term) ||
+                      String(w.orderNumber || w.orderId || '').toLowerCase().includes(term);
+                  }).length} 个记录`, `Found ${warranties.filter((w: any) => {
+                    const term = warrantySearchTerm.toLowerCase();
+                    return !warrantySearchTerm || 
+                      String(w.customerName || '').toLowerCase().includes(term) ||
+                      String(w.email || '').toLowerCase().includes(term) ||
+                      String(w.orderNumber || w.orderId || '').toLowerCase().includes(term);
+                  }).length} records`)}
+                </div>
+              </div>
+
+              {/* Warranties Table */}
+              {warrantiesLoading ? (
+                <div className="py-20 flex justify-center items-center text-neutral-400">
+                  <Loader2 size={36} className="animate-spin text-brand-650" />
+                </div>
+              ) : warranties.length > 0 ? (
+                <div className="border rounded-2xl overflow-hidden bg-white shadow-2xs">
+                  <div className="overflow-x-auto max-w-full">
+                    <table className="w-full text-left border-collapse text-xs">
+                      <thead>
+                        <tr className="bg-neutral-50/75 border-b border-neutral-100 text-neutral-450 uppercase tracking-widest text-[9px] font-black font-mono">
+                          <th className="py-3.5 px-4">{al("客户姓名", "Customer")}</th>
+                          <th className="py-3.5 px-4">{al("产品名称", "Product")}</th>
+                          <th className="py-3.5 px-4">{al("渠道", "Channel")}</th>
+                          <th className="py-3.5 px-4">{al("订单号", "Order ID")}</th>
+                          <th className="py-3.5 px-4">{al("国家", "Country")}</th>
+                          <th className="py-3.5 px-4">{al("联系电话/邮箱", "Contact Info")}</th>
+                          <th className="py-3.5 px-4">{al("居住地址", "Address")}</th>
+                          <th className="py-3.5 px-4">{al("注册时间", "Registered At")}</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-neutral-100">
+                        {warranties
+                          .filter((w: any) => {
+                            const term = warrantySearchTerm.toLowerCase();
+                            return !warrantySearchTerm || 
+                              String(w.customerName || '').toLowerCase().includes(term) ||
+                              String(w.email || '').toLowerCase().includes(term) ||
+                              String(w.orderNumber || w.orderId || '').toLowerCase().includes(term);
+                          })
+                          .map((w: any, idx: number) => {
+                            // Badge matching
+                            let channelBadge = "bg-neutral-100 text-neutral-700 border-neutral-200";
+                            if (w.channel?.toLowerCase().includes('amazon')) channelBadge = "bg-orange-50 text-orange-700 border-orange-200";
+                            else if (w.channel?.toLowerCase().includes('ebay')) channelBadge = "bg-blue-50 text-blue-700 border-blue-200";
+                            else if (w.channel?.toLowerCase().includes('tiktok')) channelBadge = "bg-neutral-950 text-white border-neutral-950";
+                            else if (w.channel?.toLowerCase().includes('ozon')) channelBadge = "bg-indigo-50 text-indigo-700 border-indigo-200";
+                            else if (w.channel?.toLowerCase().includes('wb')) channelBadge = "bg-purple-50 text-purple-700 border-purple-200";
+
+                            return (
+                              <tr key={w.id || idx} className="hover:bg-neutral-50/50 transition-colors font-medium text-neutral-700 font-sans">
+                                <td className="py-4 px-4">
+                                  <div className="font-bold text-neutral-900">{w.customerName || al("未填写", "N/A")}</div>
+                                </td>
+                                <td className="py-4 px-4 font-semibold text-neutral-800 max-w-[150px] truncate" title={w.name}>
+                                  {w.name || al("未填写", "N/A")}
+                                </td>
+                                <td className="py-4 px-4">
+                                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase border font-mono ${channelBadge}`}>
+                                    {w.channel || 'Direct'}
+                                  </span>
+                                </td>
+                                <td className="py-4 px-4 font-mono font-bold text-neutral-900 text-[11px] select-all">
+                                  {w.orderNumber || w.orderId || al("未填写", "N/A")}
+                                </td>
+                                <td className="py-4 px-4 text-neutral-500">
+                                  <div>{w.country || 'US'}</div>
+                                </td>
+                                <td className="py-4 px-4 font-semibold">
+                                  <div className="text-neutral-900 select-all">{w.email}</div>
+                                  <div className="text-neutral-450 text-[10px] font-mono mt-0.5 select-all">{w.phone || 'N/A'}</div>
+                                </td>
+                                <td className="py-4 px-4 text-neutral-500 max-w-[180px] truncate" title={w.address}>
+                                  {w.address || al("未填写", "N/A")}
+                                </td>
+                                <td className="py-4 px-4 text-neutral-400 text-[10px] font-mono">
+                                  {w.date ? new Date(w.date).toLocaleString() : 'N/A'}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ) : (
+                <div className="py-24 flex flex-col items-center justify-center text-neutral-400 text-center space-y-4 border border-dashed rounded-3xl bg-neutral-50/50">
+                  <div className="w-14 h-14 bg-neutral-100 rounded-full flex items-center justify-center text-neutral-350 shadow-2xs">
+                    <Shield size={26} />
+                  </div>
+                  <div>
+                    <p className="font-bold text-sm text-neutral-700">{al("暂无延保申请记录", "No warranty registrations found")}</p>
+                    <p className="text-xs text-neutral-400 mt-0.5 max-w-sm">
+                      {al("当有客户通过前台售后延保注册入口提交注册申请后，相关表单信息将立即在此实时登载展现。", "When clients submit extended warranty requests from the shop's front-end portal, the parsed form records will display here in real-time.")}
+                    </p>
                   </div>
                 </div>
               )}

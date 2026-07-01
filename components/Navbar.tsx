@@ -53,10 +53,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartCount }) => {
             </button>
           </div>
 
-          {/* Elegant Grobrav Logo */}
+          {/* Elegant HZTzone Logo */}
           <div className="flex-shrink-0 flex items-center justify-center flex-1 md:flex-none md:justify-start">
             <Link to="/" className="text-2xl font-serif font-black tracking-tight text-neutral-900 flex items-center gap-1">
-              Grobrav <span className="h-2 w-2 rounded-full bg-brand-600 block"></span>
+              HZTzone <span className="h-2 w-2 rounded-full bg-brand-600 block"></span>
             </Link>
           </div>
 

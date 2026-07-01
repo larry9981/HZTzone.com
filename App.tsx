@@ -18,6 +18,7 @@ import { ShippingInfo } from './pages/ShippingInfo';
 import { ReturnsExchanges } from './pages/ReturnsExchanges';
 import { SizeGuide } from './pages/SizeGuide';
 import { Account } from './pages/Account';
+import { Warranty } from './pages/Warranty';
 
 // Global Contexts imported!
 import { AppProvider, useApp } from './components/AppContext';
@@ -169,6 +170,7 @@ const CartAwareApp: React.FC = () => {
               <Route path="/returns-exchanges" element={<ReturnsExchanges />} />
               <Route path="/size-guide" element={<SizeGuide />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/warranty" element={<Warranty />} />
               
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/admin" element={<Admin />} />

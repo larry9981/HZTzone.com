@@ -1,0 +1,114 @@
+{
+  "1": {
+    "name": "HZTzone Smart Pet Feeder",
+    "sku": "SKU-HZTZONE-FEEDER",
+    "packageSize": "22cm x 15cm x 12cm",
+    "weight": "1.2kg",
+    "images": [
+      "/src/assets/images/hztzone_smart_pet_feeder_1782876443727.jpg",
+      "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80"
+    ],
+    "richText": "\n<div class=\"space-y-12 my-6 font-sans\">\n  <div class=\"border-b pb-6 border-neutral-150\">\n    <h3 class=\"font-serif font-black text-neutral-900 text-2xl tracking-tight leading-tight mb-2\">✨ Premium Smart Living & Automatic Pet Feeding Care</h3>\n    <p class=\"text-neutral-500 text-xs font-mono tracking-wider uppercase\">Double freshness security | App synchronization | 30dB Silent feed motor</p>\n  </div>\n  \n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 items-center\">\n    <div class=\"space-y-4 text-left\">\n      <h4 class=\"text-lg font-serif font-bold text-neutral-800\">01. Seamless App Synchronization</h4>\n      <p class=\"text-neutral-600 text-xs leading-relaxed\">\n        Connect to your home network effortlessly. Use our free companion app to program custom feeding timelines and dispense portion sizes right down to the gram, ensuring your pet remains healthy and happy on any schedule.\n      </p>\n    </div>\n    <div class=\"rounded-2xl overflow-hidden shadow-md border border-neutral-200\">\n      <img src=\"/src/assets/images/hztzone_smart_pet_feeder_1782876443727.jpg\" alt=\"App Control Details\" class=\"w-full h-48 object-cover\" referrerPolicy=\"no-referrer\" />\n    </div>\n  </div>\n\n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 items-center\">\n    <div class=\"rounded-2xl overflow-hidden shadow-md border border-neutral-200 md:order-first order-last\">\n      <img src=\"https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=800&q=80\" alt=\"Fresh Dry Feed\" class=\"w-full h-48 object-cover\" referrerPolicy=\"no-referrer\" />\n    </div>\n    <div class=\"space-y-4 text-left\">\n      <h4 class=\"text-lg font-serif font-bold text-neutral-800\">02. Dual Freshness Locking Chambers</h4>\n      <p class=\"text-neutral-600 text-xs leading-relaxed\">\n        Our physical silicon rubber gasket paired with a dedicated moisture desiccant pocket prevents oxidation and seals lock dryness, preserving delicious kibble crunchiness over weeks.\n      </p>\n    </div>\n  </div>\n</div>\n"
+  },
+  "2": {
+    "name": "HZTzone High-Speed Ionic Hair Dryer",
+    "sku": "SKU-HZTZONE-DRYER",
+    "packageSize": "28cm x 18cm x 10cm",
+    "weight": "0.8kg",
+    "images": [
+      "/src/assets/images/hztzone_hair_dryer_1782876454614.jpg",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1620331713243-71658693b48d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80"
+    ],
+    "richText": "\n<div class=\"space-y-12 my-6 font-sans\">\n  <div class=\"border-b pb-6 border-neutral-150\">\n    <h3 class=\"font-serif font-black text-neutral-900 text-2xl tracking-tight leading-tight mb-2\">✨ Ultra-Quiet Blowdrying & Negative Ion Hair Care</h3>\n    <p class=\"text-neutral-500 text-xs font-mono tracking-wider uppercase\">110,000 RPM Brushless motor | 200M Negative ion generator | Smart thermal control</p>\n  </div>\n  \n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 items-center\">\n    <div class=\"space-y-4 text-left\">\n      <h4 class=\"text-lg font-serif font-bold text-neutral-800\">01. 110,000 RPM Brushless Motor</h4>\n      <p class=\"text-neutral-600 text-xs leading-relaxed\">\n        Wield immense drying strength through our high-speed digital brushless motor. Generates an intense air velocity of 22m/s to flash dry long, dense locks in under three minutes without heat styling damages.\n      </p>\n    </div>\n    <div class=\"rounded-2xl overflow-hidden shadow-md border border-neutral-200\">\n      <img src=\"/src/assets/images/hztzone_hair_dryer_1782876454614.jpg\" alt=\"Brushless Motor Core\" class=\"w-full h-48 object-cover\" referrerPolicy=\"no-referrer\" />\n    </div>\n  </div>\n</div>\n"
+  },
+  "3": {
+    "name": "HZTzone Sonic Facial Cleansing Brush",
+    "sku": "SKU-HZTZONE-BRUSH",
+    "packageSize": "15cm x 10cm x 6cm",
+    "weight": "0.3kg",
+    "images": [
+      "/src/assets/images/hztzone_facial_brush_1782876466584.jpg",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1608248597481-496100c80836?auto=format&fit=crop&w=800&q=80"
+    ],
+    "richText": "\n<div class=\"space-y-12 my-6 font-sans\">\n  <div class=\"border-b pb-6 border-neutral-150\">\n    <h3 class=\"font-serif font-black text-neutral-900 text-2xl tracking-tight leading-tight mb-2\">✨ Professional Sonic Pulsations & Deep Pore Cleansing</h3>\n    <p class=\"text-neutral-500 text-xs font-mono tracking-wider uppercase\">Medical silicone touchpoints | 8,000 Vibrations/min | IPX7 Waterproof grade</p>\n  </div>\n  \n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 items-center\">\n    <div class=\"space-y-4 text-left\">\n      <h4 class=\"text-lg font-serif font-bold text-neutral-800\">01. Ultra-Hygienic Surgical Silicone</h4>\n      <p class=\"text-neutral-600 text-xs leading-relaxed\">\n        Crafted with hypoallergenic, quick-drying surgical grade silicone that is 35 times more hygienic than standard nylon brush bristles. The soft tactile touchpoints cleanse without abrasive scrubbing.\n      </p>\n    </div>\n    <div class=\"rounded-2xl overflow-hidden shadow-md border border-neutral-200\">\n      <img src=\"/src/assets/images/hztzone_facial_brush_1782876466584.jpg\" alt=\"Pure Silicone Grade\" class=\"w-full h-48 object-cover\" referrerPolicy=\"no-referrer\" />\n    </div>\n  </div>\n</div>\n"
+  },
+  "4": {
+    "name": "HZTzone Smart Cat Water Fountain",
+    "sku": "SKU-HZTZONE-FOUNTAIN",
+    "packageSize": "20cm x 20cm x 15cm",
+    "weight": "0.9kg",
+    "images": [
+      "/src/assets/images/hztzone_water_fountain_1782876478491.jpg",
+      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1535268647977-a403b69fc756?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1415369629372-26f2fe60c467?auto=format&fit=crop&w=800&q=80"
+    ],
+    "richText": "\n<div class=\"space-y-12 my-6 font-sans\">\n  <div class=\"border-b pb-6 border-neutral-150\">\n    <h3 class=\"font-serif font-black text-neutral-900 text-2xl tracking-tight leading-tight mb-2\">✨ Clean Recirculating Spring Stream for Hydrated Pets</h3>\n    <p class=\"text-neutral-500 text-xs font-mono tracking-wider uppercase\">Active triple carbon filter | Whisper-quiet motor | Free flowing stream</p>\n  </div>\n  \n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 items-center\">\n    <div class=\"space-y-4 text-left\">\n      <h4 class=\"text-lg font-serif font-bold text-neutral-800\">01. 4-Stage Active Filtration System</h4>\n      <p class=\"text-neutral-600 text-xs leading-relaxed\">\n        Purify and soften municipal tap water through our specialized quad-filtration filters. Effectively removes dust particles, pet hair, chemical odors, and toxic heavy metals seamlessly.\n      </p>\n    </div>\n    <div class=\"rounded-2xl overflow-hidden shadow-md border border-neutral-200\">\n      <img src=\"/src/assets/images/hztzone_water_fountain_1782876478491.jpg\" alt=\"High Purification Filter\" class=\"w-full h-48 object-cover\" referrerPolicy=\"no-referrer\" />\n    </div>\n  </div>\n</div>\n"
+  },
+  "5": {
+    "name": "HZTzone Smart Pet GPS & Activity Tracker",
+    "sku": "SKU-HZTZONE-GPSTAG",
+    "packageSize": "10cm x 10cm x 4cm",
+    "weight": "0.15kg",
+    "images": [
+      "/src/assets/images/hztzone_pet_gps_tracker_1782876406090.jpg",
+      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1535268647977-a403b69fc756?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80"
+    ],
+    "richText": "\n<div class=\"space-y-12 my-6 font-sans\">\n  <div class=\"border-b pb-6 border-neutral-150\">\n    <h3 class=\"font-serif font-black text-neutral-900 text-2xl tracking-tight leading-tight mb-2\">✨ Intelligent GPS Tracking & Active Pet Health Tag</h3>\n    <p class=\"text-neutral-500 text-xs font-mono tracking-wider uppercase\">Real-time LTE mapping | Geofencing boundaries | Activity step tracking</p>\n  </div>\n  \n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 items-center\">\n    <div class=\"space-y-4 text-left\">\n      <h4 class=\"text-lg font-serif font-bold text-neutral-800\">01. Pinpoint Accurate GPS Tracking</h4>\n      <p class=\"text-neutral-600 text-xs leading-relaxed\">\n        Never lose sight of your adventurous dog or wandering cat. Our advanced LTE GPS tracking tag transmits highly accurate positioning directly to your smartphone map, functional worldwide with zero blind spots.\n      </p>\n    </div>\n    <div class=\"rounded-2xl overflow-hidden shadow-md border border-neutral-200\">\n      <img src=\"/src/assets/images/hztzone_pet_gps_tracker_1782876406090.jpg\" alt=\"GPS Tracking Engine\" class=\"w-full h-48 object-cover\" referrerPolicy=\"no-referrer\" />\n    </div>\n  </div>\n</div>\n"
+  },
+  "6": {
+    "name": "HZTzone Ultrasonic Skin Scrubber",
+    "sku": "SKU-HZTZONE-SCRUBBER",
+    "packageSize": "18cm x 12cm x 5cm",
+    "weight": "0.4kg",
+    "images": [
+      "/src/assets/images/hztzone_skin_scrubber_1782876491667.jpg",
+      "https://images.unsplash.com/photo-1608248597481-496100c80836?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=800&q=80"
+    ],
+    "richText": "\n<div class=\"space-y-12 my-6 font-sans\">\n  <div class=\"border-b pb-6 border-neutral-150\">\n    <h3 class=\"font-serif font-black text-neutral-900 text-2xl tracking-tight leading-tight mb-2\">✨ Advanced Skincare Facial Treatment & Exfoliation</h3>\n    <p class=\"text-neutral-500 text-xs font-mono tracking-wider uppercase\">24KHz Scrubbing waves | EMS Microcurrent stimulation | Deep Ionic infusion</p>\n  </div>\n  \n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 items-center\">\n    <div class=\"space-y-4 text-left\">\n      <h4 class=\"text-lg font-serif font-bold text-neutral-800\">01. 24KHz Ultrasonic Pore Peeling</h4>\n      <p class=\"text-neutral-600 text-xs leading-relaxed\">\n        Leverages high-frequency ultrasonic waves to instantly atomize water, creating fine micro-droplets that lift blackheads, sebum, grease, and dry dead skins without harsh chemicals.\n      </p>\n    </div>\n    <div class=\"rounded-2xl overflow-hidden shadow-md border border-neutral-200\">\n      <img src=\"/src/assets/images/hztzone_skin_scrubber_1782876491667.jpg\" alt=\"Pore Cleaning Technology\" class=\"w-full h-48 object-cover\" referrerPolicy=\"no-referrer\" />\n    </div>\n  </div>\n</div>\n"
+  },
+  "7": {
+    "name": "HZTzone Smart Pet Remote Training Collar",
+    "sku": "SKU-HZTZONE-TRAINER",
+    "packageSize": "16cm x 12cm x 6cm",
+    "weight": "0.45kg",
+    "images": [
+      "/src/assets/images/hztzone_pet_training_collar_1782876416892.jpg",
+      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1535268647977-a403b69fc756?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=800&q=80"
+    ],
+    "richText": "\n<div class=\"space-y-12 my-6 font-sans\">\n  <div class=\"border-b pb-6 border-neutral-150\">\n    <h3 class=\"font-serif font-black text-neutral-900 text-2xl tracking-tight leading-tight mb-2\">✨ Professional Safe Pet Remote Training System</h3>\n    <p class=\"text-neutral-500 text-xs font-mono tracking-wider uppercase\">Vibration, beep, static modes | 800-Meter secure range | IPX7 Waterproof collar</p>\n  </div>\n  \n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 items-center\">\n    <div class=\"space-y-4 text-left\">\n      <h4 class=\"text-lg font-serif font-bold text-neutral-800\">01. Gentle Humanized Training Options</h4>\n      <p class=\"text-neutral-600 text-xs leading-relaxed\">\n        Guide and train your pets gently using 3 harmless warning feedback settings: premium audio chime, subtle pulse vibrations (1-100 scale), and humanized safe warning feedback, making boundaries easy to teach.\n      </p>\n    </div>\n    <div class=\"rounded-2xl overflow-hidden shadow-md border border-neutral-200\">\n      <img src=\"/src/assets/images/hztzone_pet_training_collar_1782876416892.jpg\" alt=\"Training Options UI\" class=\"w-full h-48 object-cover\" referrerPolicy=\"no-referrer\" />\n    </div>\n  </div>\n</div>\n"
+  },
+  "8": {
+    "name": "HZTzone Smart Pet Health & Vitality Monitor",
+    "sku": "SKU-HZTZONE-HEALTH",
+    "packageSize": "25cm x 25cm x 10cm",
+    "weight": "1.4kg",
+    "images": [
+      "/src/assets/images/hztzone_pet_health_monitor_1782876427719.jpg",
+      "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1535268647977-a403b69fc756?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1585338111522-a3c631c79ded?auto=format&fit=crop&w=800&q=80"
+    ],
+    "richText": "\n<div class=\"space-y-12 my-6 font-sans\">\n  <div class=\"border-b pb-6 border-neutral-150\">\n    <h3 class=\"font-serif font-black text-neutral-900 text-2xl tracking-tight leading-tight mb-2\">✨ Continuous Pet Health, Hydration & Vitality Tracking</h3>\n    <p class=\"text-neutral-500 text-xs font-mono tracking-wider uppercase\">Weight intake analyzer | Vital indicators tracker | 24/7 Smart health logs</p>\n  </div>\n  \n  <div class=\"grid grid-cols-1 md:grid-cols-2 gap-8 items-center\">\n    <div class=\"space-y-4 text-left\">\n      <h4 class=\"text-lg font-serif font-bold text-neutral-800\">01. High-Precision Health & Intake Monitor</h4>\n      <p class=\"text-neutral-600 text-xs leading-relaxed\">\n        Track pet nutrition patterns instantly. It automatically measures daily intake, eating speeds, and body weight, and generates daily health score logs inside the HZTzone companion app.\n      </p>\n    </div>\n    <div class=\"rounded-2xl overflow-hidden shadow-md border border-neutral-200\">\n      <img src=\"/src/assets/images/hztzone_pet_health_monitor_1782876427719.jpg\" alt=\"Intake Monitor Display\" class=\"w-full h-48 object-cover\" referrerPolicy=\"no-referrer\" />\n    </div>\n  </div>\n</div>\n"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "name": "Remix: Grobrav - Premium Print-On-Demand Store",
-  "description": "A luxury personalized apparel e-commerce brand powered by Gemini AI with multi-language and merchant analytics integrations.",
+  "name": "HZTzone Smart IoT & Lifestyle Electronics",
+  "description": "HZTzone - A premium tech-focused e-commerce store offering smart pet supplies, IoT home appliances, and advanced skincare beauty gadgets.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

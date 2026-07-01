@@ -491,5 +491,32 @@ export const api = {
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Failed to save shipping config');
     return data;
+  },
+
+  // Extended Warranty Operations
+  async submitWarranty(payload: {
+    productName: string;
+    country: string;
+    channel: string;
+    customerName: string;
+    email: string;
+    address: string;
+    orderNumber: string;
+    phone: string;
+  }) {
+    const res = await fetch(`${API_BASE}/api/warranty`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Failed to submit extended warranty registration');
+    return data;
+  },
+
+  async getWarranties() {
+    const res = await fetch(`${API_BASE}/api/admin/warranties`);
+    if (!res.ok) throw new Error('Failed to load extended warranty registrations');
+    return res.json();
   }
 };
